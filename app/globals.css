@@ -6,6 +6,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --max-width: min(calc(100% - 2rem), 70vw);
+
+  --border-clr: #ececec;
+
+  --primary-clr-dark: #353b41;
+  --primary-clr-purple: #603fef;
+  --primary-clr-violet: #8a2be2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,11 +24,11 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  min-width: 375px;
+  position: relative;
+}
+
+.setWidth {
+  max-width: var(--max-width);
+  margin-inline: auto;
 }
