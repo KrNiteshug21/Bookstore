@@ -1,4 +1,5 @@
 "use client";
+import Navbar from "../comp/Navbar";
 import { useState, useEffect } from "react";
 import BookCard from "./comp/BookCard";
 
@@ -19,16 +20,21 @@ export default function BookPage() {
   }, []);
 
   return (
-    <main className="pb-8 pt-24">
-      <div className="setWidth flex flex-row flex-wrap justify-center gap-4">
-        {loading === true ? (
-          books?.results?.map((book) => <BookCard key={book.id} book={book} />)
-        ) : (
-          <div className="grid place-content-center h-96 ">
-            <h1 className="setWidth  text-4xl  font-medium">Loading...</h1>
-          </div>
-        )}
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <main className="pb-8 pt-24">
+        <div className="setWidth flex flex-row flex-wrap justify-center gap-4">
+          {loading === true ? (
+            books?.results?.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))
+          ) : (
+            <div className="grid place-content-center h-96 ">
+              <h1 className="setWidth  text-4xl  font-medium">Loading...</h1>
+            </div>
+          )}
+        </div>
+      </main>
+    </>
   );
 }

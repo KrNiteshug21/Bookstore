@@ -6,7 +6,6 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
-  console.log(cartItems, typeof totalCartPrice);
 
   const price = (num) => {
     while (num >= 999) {
@@ -16,15 +15,17 @@ export const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (cartItems.length !== 0) {
-      const newCartItems = JSON.parse(localStorage.getItem("books"));
-      setTotalCartPrice(() => {
+    const newCartItems = JSON.parse(localStorage.getItem("books"));
+    setTotalCartPrice(() => {
+      if (newCartItems.length !== 0) {
         const prices = newCartItems?.map((book) => price(book.download_count));
         const totalPrice = prices?.reduce((sum, curr) => sum + curr);
         return totalPrice;
-      });
-      setCartItems(() => newCartItems);
-    }
+      } else {
+        return 0;
+      }
+    });
+    setCartItems(() => newCartItems);
   }, []);
 
   const handleAddCart = (book) => {
@@ -37,14 +38,14 @@ export const DataProvider = ({ children }) => {
         if (!cartItems) setTotalCartPrice(() => 0);
         else setTotalCartPrice((prev) => prev + price(book.download_count));
         setCartItems(newCartItems);
-        console.log(cartItems);
+        // console.log(cartItems);
       }
     } else {
       localStorage.setItem("books", JSON.stringify(book));
       if (!cartItems) setTotalCartPrice(() => 0);
       else setTotalCartPrice((prev) => prev + price(book.download_count));
       setCartItems([book]);
-      console.log(cartItems);
+      // console.log(cartItems);
     }
   };
 
@@ -57,7 +58,7 @@ export const DataProvider = ({ children }) => {
       if (newCartItems.length === 0) setTotalCartPrice(0);
       else setTotalCartPrice((prev) => prev - price(book.download_count));
       localStorage.setItem("books", JSON.stringify(newCartItems));
-      console.log(cartItems);
+      // console.log(cartItems);
     }
   };
 

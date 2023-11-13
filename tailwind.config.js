@@ -17,6 +17,7 @@ module.exports = {
         "primary-clr-purple": "var(--primary-clr-purple)",
         "primary-clr-violet": "var(--primary-clr-violet)",
         "border-clr": "var(--border-clr)",
+        "primary-bg-clr": "var(--primary-bg-clr)",
       },
     },
   },

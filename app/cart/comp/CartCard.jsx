@@ -1,14 +1,14 @@
-import { DataContext } from "@/context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { useContext } from "react";
-import { AiFillDelete } from "react-icons/ai";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function CartCard({ book }) {
   const { price, handleDeleteCart } = useContext(DataContext);
   const imageURL = `https://www.gutenberg.org/cache/epub/${book.id}/pg${book.id}.cover.medium.jpg`;
-  console.log(book);
+  // console.log(book);
 
   return (
-    <div className="flex flex-wrap gap-4 px-6">
+    <div className="flex flex-wrap gap-4 px-6 my-4">
       <div className="w-24">
         <img
           className="h-full w-auto rounded-md"
@@ -27,8 +27,11 @@ export default function CartCard({ book }) {
         <p className="flex flex-row content-center text-xl">
           Each: ₹{price(book.download_count)}
         </p>
-        <button onClick={() => handleDeleteCart(book)}>
-          <AiFillDelete size={40} />{" "}
+        <button
+          className="border-[3px] border-red-500 rounded my-2"
+          onClick={() => handleDeleteCart(book)}
+        >
+          <RiDeleteBin5Fill color="rgb(239 68 68)" size={40} />{" "}
         </button>
       </div>
     </div>

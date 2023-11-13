@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+// import { AiOutlineShoppingCart } from "react-icons/ai";
+// import { MdOutlineAccountCircle } from "react-icons/MD";
 import { useContext } from "react";
-import { DataContext } from "@/context/DataContext";
+import { DataContext } from "../../context/DataContext";
 
 export default function Navbar() {
   const { cartItems } = useContext(DataContext);
-  console.log("cartItems", typeof cartItems);
 
   return (
     <header className="bg-primary-clr-dark text-white/80 text-4xl p-4 fixed w-screen">
@@ -14,13 +14,18 @@ export default function Navbar() {
         <Link href="/" className="">
           BookStore
         </Link>
-        <nav className="flex flex-row gap-2 justify-between">
+        <nav className="flex flex-row gap-4 justify-between">
+          <Link href="/cart" className="no-underline hover:underline relative">
+            Cart
+            <p className="fixed top-0 right-0">
+              {cartItems.length !== 0 ? cartItems.length : ""}
+            </p>
+          </Link>
           <Link
-            href="/cart"
-            className="flex flex-row gap-2 align-middle justify-center"
+            href="/api/auth/signout"
+            className="no-underline hover:underline"
           >
-            <AiOutlineShoppingCart />
-            <p>Cart</p>
+            SignOut
           </Link>
         </nav>
       </div>

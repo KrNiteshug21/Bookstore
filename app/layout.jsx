@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "./comp/Navbar";
-import { DataProvider } from "@/context/DataContext";
+import { DataProvider } from "../context/DataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <DataProvider>
-          <Navbar />
-          {children}
-        </DataProvider>
+      <body className="bg-primary-bg-clr">
+        <DataProvider>{children}</DataProvider>
       </body>
     </html>
   );
