@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "../comp/Navbar";
 import { useState, useEffect } from "react";
 import BookCard from "./comp/BookCard";
@@ -34,6 +35,16 @@ export default function BookPage() {
             </div>
           )}
         </div>
+        {loading && (
+          <div className="setWidth text-center">
+            <Link
+              href="/cart"
+              className="text-3xl py-4 mx-auto no-underline hover:underline"
+            >
+              Go to CartPage
+            </Link>
+          </div>
+        )}
       </main>
     </>
   );

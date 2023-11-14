@@ -6,6 +6,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
+  console.log("cartitems", cartItems);
 
   const price = (num) => {
     while (num >= 999) {
@@ -15,9 +16,9 @@ export const DataProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const newCartItems = JSON.parse(localStorage.getItem("books"));
+    const newCartItems = JSON.parse(localStorage.getItem("books")) || [];
     setTotalCartPrice(() => {
-      if (newCartItems.length !== 0) {
+      if (Array.isArray(newCartItems) && newCartItems) {
         const prices = newCartItems?.map((book) => price(book.download_count));
         const totalPrice = prices?.reduce((sum, curr) => sum + curr);
         return totalPrice;

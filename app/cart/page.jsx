@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "../comp/Navbar";
 import CartCard from "./comp/CartCard";
 import { DataContext } from "../../context/DataContext";
@@ -30,10 +31,16 @@ export default function CartPage() {
                 <p>There is no product in your Cart.</p>
               </div>
             )}
-            <div className="text-xl text-right bg-border-clr px-4 py-8 rounded-b-sm">
+            <div className="flex justify-between text-xl bg-border-clr px-4 py-8 rounded-b-sm">
               <p className="flex content-center">
                 Total Price:&nbsp; <b> ₹{cartItems ? totalCartPrice : 0}</b>
               </p>
+              <Link
+                href="/cart/checkout"
+                className="bg-primary-clr-purple px-4 py-2 rounded-lg text-white/90"
+              >
+                Checkout
+              </Link>
             </div>
           </div>
         </section>
