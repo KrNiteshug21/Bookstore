@@ -1,16 +1,25 @@
 "use client";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../../context/DataContext";
 
-export default function thankPage() {
+export default function ThankPage() {
   const { setCartItems, setTotalCartPrice } = useContext(DataContext);
-  const handleClick = () => {
-    const newCartItems = [];
-    setCartItems(() => newCartItems);
-    setTotalCartPrice(() => 0);
-    localStorage.clear();
-  };
+  const [trigger, setTrigger] = useState(false);
+  // const handleClick = () => {
+  //   const newCartItems = [];
+  //   setCartItems(() => newCartItems);
+  //   setTotalCartPrice(() => 0);
+  //   localStorage.removeItem("books");
+  // };
+
+  useEffect(() => {
+    setCartItems(() => []);
+    localStorage.removeItem("books");
+    setTimeout(() => {
+      setTrigger(false);
+    }, 1000);
+  }, [trigger]);
 
   return (
     <section className="grid place-content-center min-h-screen">
@@ -20,7 +29,7 @@ export default function thankPage() {
         <p className="text-xl">Come again</p>
         <Link
           href="/books"
-          onClick={() => handleClick()}
+          onClick={() => setTrigger(true)}
           className="text-2xl no-underline hover:underline"
         >
           Back to HomePage

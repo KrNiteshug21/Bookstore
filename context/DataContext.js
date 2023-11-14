@@ -18,7 +18,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const newCartItems = JSON.parse(localStorage.getItem("books")) || [];
     setTotalCartPrice(() => {
-      if (Array.isArray(newCartItems) && newCartItems) {
+      if (newCartItems && cartItems.length !== 0) {
         const prices = newCartItems?.map((book) => price(book.download_count));
         const totalPrice = prices?.reduce((sum, curr) => sum + curr);
         return totalPrice;

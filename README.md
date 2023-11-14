@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## testing the authorisation
+
+use any of the below usernames:
+1.username: "Bret" and password: "leanBret"
+2.username: "Antonette" and password: "ervinHowell"
+3.username: "Samantha" and password: "samBauch"
+4.username: "Karianne" and password: "Karsack"
+5.username: "Kamren" and password: "KamDiet"
+
 ## Getting Started
 
 First, run the development server:
