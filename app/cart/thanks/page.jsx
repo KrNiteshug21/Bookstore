@@ -9,7 +9,7 @@ export default function thankPage() {
     const newCartItems = [];
     setCartItems(() => newCartItems);
     setTotalCartPrice(() => 0);
-    localStorage.setItem("books", JSON.stringify([{}]));
+    localStorage.clear();
   };
 
   return (
