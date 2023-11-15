@@ -21,7 +21,7 @@ export const DataProvider = ({ children }) => {
       if (newCartItems && cartItems.length !== 0) {
         const prices = newCartItems?.map((book) => price(book.download_count));
         const totalPrice = prices?.reduce((sum, curr) => sum + curr);
-        return totalPrice;
+        return totalPrice.toFixed(2);
       } else {
         return 0;
       }

@@ -18,14 +18,19 @@ export default function Checkout() {
       <main className="min-h-screen pt-24 pb-6">
         <div className="setWidth flex flex-row checkoutWrap justify-between gap-4 ">
           <div className="flex flex-col flex-1">
-            <Address setIsAddressCompleted={setIsAddressCompleted} />
+            <Address
+              isAddressCompleted={isAddressCompleted}
+              setIsAddressCompleted={setIsAddressCompleted}
+            />
             <Summary
               isAddressCompleted={isAddressCompleted}
+              isSummaryChecked={isSummaryChecked}
               setIsSummaryChecked={setIsSummaryChecked}
             />
             <Payment
               isAddressCompleted={isAddressCompleted}
               isSummaryChecked={isSummaryChecked}
+              isPaymentDone={isPaymentDone}
               setIsPaymentDone={setIsPaymentDone}
             />
           </div>
