@@ -13,11 +13,11 @@ export default function CartPage() {
     <>
       <Navbar />
       <main>
-        <section className="setWidth pb-8 pt-24">
+        <section className="setWidth pb-8 pt-4">
           <div className="setWidth flex flex-col gap-4 border-2 rounded-lg overflow-hidden min-h-96">
             <div className="flex content-center gap-4 bg-primary-clr-dark text-white/90 px-4 py-4">
               <AiOutlineShoppingCart size={36} />
-              <h3 className="text-2xl">Shipping Cart</h3>
+              <h3 className="text-2xl">Shopping Cart</h3>
             </div>
 
             {cartItems?.length > 0 ? (
@@ -31,7 +31,7 @@ export default function CartPage() {
                 <p>There is no product in your Cart.</p>
               </div>
             )}
-            <div className="flex justify-between text-xl bg-border-clr px-4 py-8 rounded-b-sm">
+            <div className="flex justify-between flex-wrap gap-2 text-xl bg-border-clr px-4 py-8 rounded-b-sm">
               <p className="flex content-center">
                 Total Price:&nbsp; <b> ₹{cartItems ? totalCartPrice : 0}</b>
               </p>

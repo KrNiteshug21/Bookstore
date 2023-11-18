@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DataContext } from "../../../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 import { useContext } from "react";
 
 export default function BookCard({ book }) {

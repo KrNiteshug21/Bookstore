@@ -15,7 +15,7 @@ export default function Checkout() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-6">
+      <main className="min-h-screen pt-4 pb-6">
         <div className="setWidth flex flex-row checkoutWrap justify-between gap-4 ">
           <div className="flex flex-col flex-1">
             <Address

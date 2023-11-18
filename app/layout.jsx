@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-primary-bg-clr">
+      <body className="bg-primary-bg-clr relative">
         <DataProvider>{children}</DataProvider>
       </body>
     </html>

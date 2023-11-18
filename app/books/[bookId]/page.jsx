@@ -1,43 +1,52 @@
 "use client";
+import data from "../../data/db.json";
 import Navbar from "../../comp/Navbar";
 import { DataContext } from "../../../context/DataContext";
 import { useState, useEffect, useContext } from "react";
 
 const Book = ({ params: bookId }) => {
   const [book, setBook] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { handleAddCart, price } = useContext(DataContext);
   const id = bookId.bookId;
   const imageURL = `https://www.gutenberg.org/cache/epub/${id}/pg${id}.cover.medium.jpg`;
+  console.log("books", data);
+
+  // useEffect(() => {
+  //   const fetchBooks = async () => {
+  //     const res = await fetch(`https://gutendex.com/books/${id}/`);
+  //     if (!res.ok) throw new Error("Couldn't fetch requested resource");
+  //     const book = await res.json();
+  //     setBook(book);
+  //     setLoading(true);
+  //   };
+
+  //   fetchBooks();
+  // }, [id]);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const res = await fetch(`https://gutendex.com/books/${id}/`);
-      if (!res.ok) throw new Error("Couldn't fetch requested resource");
-      const book = await res.json();
-      setBook(book);
-      setLoading(true);
-    };
-
-    fetchBooks();
-  }, [id]);
+    const book = data.results.find((bk) => bk.id.toString() === id);
+    setBook(book);
+    console.log(book);
+    setLoading(false);
+  }, []);
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen ">
-        {loading === true ? (
-          <div className="setWidth flex flex-row flex-wrap gap-6 pt-24 pb-8">
+        {!loading ? (
+          <div className="setWidth flex flex-row flex-wrap gap-6 pt-4 pb-8">
             <div className="flex-initial">
-              <img className="" src={imageURL} alt={book.title} fill={true} />
+              <img className="" src={imageURL} alt={book?.title} />
             </div>
             <div className="flex-initial">
-              <h2 className="text-3xl">{book.title}</h2>
+              <h2 className="text-3xl">{book?.title}</h2>
               <p>
                 {book?.authors?.map((author) => {
                   <span>
-                    Author: {author.name} from ({author.birth_year} -{" "}
-                    {author.death_year})
+                    Author: {author?.name} from ({author?.birth_year} -{" "}
+                    {author?.death_year})
                   </span>;
                 })}
               </p>
@@ -58,7 +67,7 @@ const Book = ({ params: bookId }) => {
               </div>
               <p>{}</p>
               <p className="flex flex-row items-center">
-                Price: ₹{price(book.id)}
+                Price: ₹{price(book?.id)}
               </p>
               <div className="flex flex-row gap-4 py-4">
                 <button

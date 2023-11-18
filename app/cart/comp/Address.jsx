@@ -38,7 +38,7 @@ export default function Address({ isAddressCompleted, setIsAddressCompleted }) {
   return (
     <section className="border-2 border-border-clr">
       {isAddressCompleted ? (
-        <div className="flex content-center justify-between gap-4 w-full bg-white/90 px-2 py-4 my-4">
+        <div className="flex content-center justify-between flex-wrap gap-4 w-full bg-white/90 px-2 py-4 my-4 text-sm md:text-xl">
           <div className="flex gap-2">
             <h2 className="text-2xl text-black/80">
               <span className="text-white bg-black/80 px-2 rounded">1</span>{" "}

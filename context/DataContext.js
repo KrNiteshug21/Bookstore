@@ -6,13 +6,12 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalCartPrice, setTotalCartPrice] = useState(0);
-  console.log("cartitems", cartItems);
 
   const price = (num) => {
     while (num >= 999) {
       num /= 10;
     }
-    return +num.toFixed(2);
+    return +num?.toFixed(2);
   };
 
   useEffect(() => {

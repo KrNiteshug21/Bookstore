@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="bg-primary-clr-dark text-white/80 text-4xl p-4 fixed w-screen z-10">
+    <header className="bg-primary-clr-dark text-white/80 text-4xl p-4 sticky top-0 z-10">
       <div className="setWidth flex flex-row justify-between content-center flex-wrap">
         <Link href="/" className="">
           BookStore
